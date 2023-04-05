@@ -8,7 +8,7 @@ let days = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 
 let months = [
@@ -23,7 +23,7 @@ let months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 let today = now.getDate();
@@ -39,8 +39,6 @@ currentDate.innerHTML = `${day}, ${month} ${today}. ${hours}:${minutes}`;
 setInterval(function () {
   window.location.reload();
 }, 300000);
-
-//
 
 function search(event) {
   event.preventDefault();
@@ -61,8 +59,6 @@ function search(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
-
-//
 
 let temperature = document.querySelector("#current-temp-number");
 let ceLink = document.querySelector("#celsius");
@@ -105,13 +101,19 @@ let iconEmojis = {
   "13d": "🌨",
   "13n": "🌨",
   "50d": "🌫",
-  "50n": "🌫"
+  "50n": "🌫",
 };
 
 function showCurrentTemp(response) {
   let temperatureData = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#current-temp-number");
   currentTemp.innerHTML = `${temperatureData}`;
+  let maxTemp = document.querySelector("#max-temp");
+  let maxTempData = Math.round(response.data.main.temp_max);
+  maxTemp.innerHTML = `${maxTempData}°`;
+  let minTemp = document.querySelector("#min-temp");
+  let minTempData = Math.round(response.data.main.temp_min);
+  minTemp.innerHTML = `${minTempData}°`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
   let winds = document.querySelector("#winds");
@@ -130,13 +132,18 @@ function showCurrentTemp(response) {
   icon.innerHTML = `${iconEmoji}`;
 }
 
-////
 function showWeather(response) {
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = `${response.data.name}`;
   let localTemp = document.querySelector("#current-temp-number");
   let temperatureData = Math.round(response.data.main.temp);
   localTemp.innerHTML = `${temperatureData}`;
+  let maxTemp = document.querySelector("#max-temp");
+  let maxTempData = Math.round(response.data.main.temp_max);
+  maxTemp.innerHTML = `${maxTempData}°`;
+  let minTemp = document.querySelector("#min-temp");
+  let minTempData = Math.round(response.data.main.temp_min);
+  minTemp.innerHTML = `${minTempData}°`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
   let winds = document.querySelector("#winds");
