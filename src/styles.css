@@ -94,7 +94,7 @@ form {
 
 .col-5 {
   display: block;
-  padding: 10px 10px 10px 20px;
+  padding: 20px 10px 0px 70px;
 }
 
 .city-inner {
@@ -116,9 +116,7 @@ form {
   font-size: 35px;
   font-weight: bold;
   text-align: left;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 .current-date {
@@ -128,6 +126,7 @@ form {
 
 .current-temp {
   margin-left: 0;
+  margin-top: 20px;
 }
 
 .current-temp-number {
@@ -146,20 +145,20 @@ form {
   font-size: 30px;
   font-weight: bold;
   color: #dfdce3;
-  margin-top: 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 #fahrenheit {
   font-size: 30px;
   font-weight: bold;
   color: #dfdce3;
-  margin-top: 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 .temp-bar {
   font-size: 40px;
   color: gray;
-  margin-top: 0px;
+  margin: 30px 0px 0px 0px;
 }
 
 .max-temp,
@@ -174,14 +173,22 @@ form {
   font-weight: bold;
 }
 
+.grid-container {
+  margin: 20px 0px 0px 0px;
+}
+
 .col-4 {
   display: flex;
   flex-direction: column;
+  padding: 0px 150px 0px 0px;
+  margin-top: -35px;
 }
 
 .weather-icon {
   font-size: 120px;
   text-align: center;
+  padding-bottom: 0px;
+  margin-bottom: -5px;
 }
 
 .weather {
@@ -189,6 +196,8 @@ form {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  padding-top: 0px;
+  margin-top: -10px;
 }
 
 .realfeel {
@@ -204,13 +213,15 @@ form {
 
 .col-3 {
   text-align: center;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: bold;
+  padding: 0px 120px 0px 10px;
+  margin-top: -5px;
 }
 
 .humidity {
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   background: #f7b733;
   display: flex;
@@ -222,8 +233,8 @@ form {
 }
 
 .clouds {
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   background: #f7b733;
   display: flex;
@@ -235,8 +246,8 @@ form {
 }
 
 .winds {
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   background: #f7b733;
   display: flex;
