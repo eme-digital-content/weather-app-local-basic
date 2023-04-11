@@ -83,6 +83,27 @@ function convertC(event) {
 faLink.addEventListener("click", convertF);
 ceLink.addEventListener("click", convertC);
 
+let iconEmojis = {
+  "01d": "☀️",
+  "01n": "🌙",
+  "02d": "⛅️",
+  "02n": "☁️🌙",
+  "03d": "🌥",
+  "03n": "🌥",
+  "04d": "☁️",
+  "04n": "☁️",
+  "09d": "🌧",
+  "09n": "🌧",
+  "10d": "🌦",
+  "10n": "🌧🌙",
+  "11d": "⛈",
+  "11n": "⛈",
+  "13d": "🌨",
+  "13n": "🌨",
+  "50d": "🌫",
+  "50n": "🌫",
+};
+
 function showCurrentTemp(response) {
   let temperatureData = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#current-temp-number");
@@ -107,11 +128,8 @@ function showCurrentTemp(response) {
   let description = document.querySelector("#weather-alert");
   description.innerHTML = `${response.data.weather[0].description}`;
   let icon = document.querySelector("#icon");
-  icon.setAttribute(
-    src,
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}1x.png`
-  );
-  icon.setAttribute("alt", response.data.weather[0].description);
+  let iconEmoji = iconEmojis[response.data.weather[0].icon];
+  icon.innerHTML = `${iconEmoji}`;
 }
 
 function showWeather(response) {
@@ -140,11 +158,8 @@ function showWeather(response) {
   let description = document.querySelector("#weather-alert");
   description.innerHTML = `${response.data.weather[0].description}`;
   let icon = document.querySelector("#icon");
-  icon.setAttribute(
-    src,
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}1x.png`
-  );
-  icon.setAttribute("alt", response.data.weather[0].description);
+  let iconEmoji = iconEmojis[response.data.weather[0].icon];
+  icon.innerHTML = `${iconEmoji}`;
 }
 
 function retrievePosition(position) {
