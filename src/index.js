@@ -109,7 +109,7 @@ function showCurrentTemp(response) {
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     src,
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}1x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
 }
@@ -142,7 +142,7 @@ function showWeather(response) {
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     src,
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}1x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
 }
