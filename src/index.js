@@ -272,6 +272,8 @@ function getNewYork(response) {
     .then(showCurrentTemp);
   let nyCity = document.querySelector("#city");
   nyCity.innerHTML = `${"New York"}`;
+  booleF = true;
+  booleC = false;
 }
 let buttonNY = document.querySelector("#new-york");
 buttonNY.addEventListener("click", getNewYork);
@@ -285,6 +287,8 @@ function getParis(response) {
     .then(showCurrentTemp);
   let parisCity = document.querySelector("#city");
   parisCity.innerHTML = `${"Paris"}`;
+  booleF = true;
+  booleC = false;
 }
 let buttonParis = document.querySelector("#paris");
 buttonParis.addEventListener("click", getParis);
@@ -298,6 +302,8 @@ function getToronto(response) {
     .then(showCurrentTemp);
   let torontoCity = document.querySelector("#city");
   torontoCity.innerHTML = `${"Toronto"}`;
+  booleF = true;
+  booleC = false;
 }
 let buttonToronto = document.querySelector("#toronto");
 buttonToronto.addEventListener("click", getToronto);
@@ -311,6 +317,8 @@ function getTokyo(response) {
     .then(showCurrentTemp);
   let tokyoCity = document.querySelector("#city");
   tokyoCity.innerHTML = `${"Tokyo"}`;
+  booleF = true;
+  booleC = false;
 }
 let buttonTokyo = document.querySelector("#tokyo");
 buttonTokyo.addEventListener("click", getTokyo);
@@ -324,6 +332,8 @@ function getLima(response) {
     .then(showCurrentTemp);
   let limaCity = document.querySelector("#city");
   limaCity.innerHTML = `${"Lima"}`;
+  booleF = true;
+  booleC = false;
 }
 let buttonLima = document.querySelector("#lima");
 buttonLima.addEventListener("click", getLima);
