@@ -2,6 +2,7 @@
   padding: 15px 15px;
   margin-top: 25px;
   background-color: #4abdac;
+  width: 70%;
 }
 
 body {
@@ -148,16 +149,25 @@ form {
   margin: 10px 0px 0px 0px;
 }
 
+.col-5 .active {
+  color: #dfdce3;
+  cursor: default;
+}
+
+.col-5 .active:hover {
+  text-decoration: none;
+}
+
 #fahrenheit {
   font-size: 30px;
   font-weight: bold;
-  color: #dfdce3;
+  color: grey;
   margin: 10px 0px 0px 0px;
 }
 
 .temp-bar {
   font-size: 40px;
-  color: gray;
+  color: #dfdce3;
   margin: 30px 0px 0px 0px;
 }
 
@@ -180,7 +190,7 @@ form {
 .col-4 {
   display: flex;
   flex-direction: column;
-  padding: 0px 150px 0px 0px;
+  padding: 0px 100px 0px 40px;
   margin-top: -35px;
 }
 
@@ -215,7 +225,7 @@ form {
   text-align: center;
   font-size: 17px;
   font-weight: bold;
-  padding: 0px 120px 0px 10px;
+  padding: 0px 70px 0px 0px;
   margin-top: -5px;
 }
 
@@ -259,10 +269,11 @@ form {
 }
 
 .week {
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
   margin-top: 15px;
 }
 

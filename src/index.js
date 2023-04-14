@@ -1,3 +1,5 @@
+//Current day
+
 let now = new Date();
 let currentDate = document.querySelector("#current-date");
 
@@ -40,6 +42,8 @@ setInterval(function () {
   window.location.reload();
 }, 300000);
 
+//Search bar
+
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
@@ -60,28 +64,105 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
+//Units conversion
+
 let temperature = document.querySelector("#current-temp-number");
 let ceLink = document.querySelector("#celsius");
 let faLink = document.querySelector("#fahrenheit");
+let maxTemp = document.querySelector("#max-temp");
+let minTemp = document.querySelector("#min-temp");
+let feeling = document.querySelector("#realfeel");
+let booleF = true;
+let booleC = false;
 
 function convertF(event) {
+  event.preventDefault();
   let celsius = parseFloat(temperature.innerHTML);
   if (!isNaN(celsius)) {
     let fahrenheit = (celsius * 9) / 5 + 32;
-    temperature.innerHTML = Math.round(fahrenheit);
+    if (booleF) {
+      temperature.innerHTML = Math.round(fahrenheit);
+    }
   }
+
+  celsius = parseFloat(maxTemp.innerHTML);
+  if (!isNaN(celsius)) {
+    let fahrenheit = (celsius * 9) / 5 + 32;
+    let maxTempData = Math.round(fahrenheit);
+    if (booleF) {
+      maxTemp.innerHTML = `${maxTempData}°`;
+    }
+  }
+
+  celsius = parseFloat(minTemp.innerHTML);
+  if (!isNaN(celsius)) {
+    let fahrenheit = (celsius * 9) / 5 + 32;
+    let minTempData = Math.round(fahrenheit);
+    if (booleF) {
+      minTemp.innerHTML = `${minTempData}°`;
+    }
+  }
+
+  celsius = parseFloat(realfeel.innerHTML);
+  if (!isNaN(celsius)) {
+    let fahrenheit = (celsius * 9) / 5 + 32;
+    let realfeel = Math.round(fahrenheit);
+    if (booleF) {
+      feeling.innerHTML = `${realfeel}`;
+    }
+  }
+  booleF = false;
+  booleC = true;
+  ceLink.classList.remove("active");
+  faLink.classList.add("active");
 }
 
 function convertC(event) {
+  event.preventDefault();
   let fahrenheit = parseFloat(temperature.innerHTML);
   if (!isNaN(fahrenheit)) {
     let celsius = ((fahrenheit - 32) * 5) / 9;
-    temperature.innerHTML = Math.round(celsius);
+    if (booleC) {
+      temperature.innerHTML = Math.round(celsius);
+    }
   }
+
+  fahrenheit = parseFloat(maxTemp.innerHTML);
+  if (!isNaN(fahrenheit)) {
+    let celsius = ((fahrenheit - 32) * 5) / 9;
+    let maxTempData = Math.round(celsius);
+    if (booleC) {
+      maxTemp.innerHTML = `${maxTempData}°`;
+    }
+  }
+
+  fahrenheit = parseFloat(minTemp.innerHTML);
+  if (!isNaN(fahrenheit)) {
+    let celsius = ((fahrenheit - 32) * 5) / 9;
+    let minTempData = Math.round(celsius);
+    if (booleC) {
+      minTemp.innerHTML = `${minTempData}°`;
+    }
+  }
+
+  fahrenheit = parseFloat(feeling.innerHTML);
+  if (!isNaN(fahrenheit)) {
+    let celsius = ((fahrenheit - 32) * 5) / 9;
+    let realfeel = Math.round(celsius);
+    if (booleC) {
+      feeling.innerHTML = `${realfeel}`;
+    }
+  }
+  booleF = true;
+  booleC = false;
+  ceLink.classList.add("active");
+  faLink.classList.remove("active");
 }
 
 faLink.addEventListener("click", convertF);
 ceLink.addEventListener("click", convertC);
+
+//Weather icon
 
 let iconEmojis = {
   "01d": "☀️",
@@ -103,6 +184,8 @@ let iconEmojis = {
   "50d": "🌫",
   "50n": "🌫",
 };
+
+//Current temperature
 
 function showCurrentTemp(response) {
   let temperatureData = Math.round(response.data.main.temp);
@@ -131,6 +214,8 @@ function showCurrentTemp(response) {
   let iconEmoji = iconEmojis[response.data.weather[0].icon];
   icon.innerHTML = `${iconEmoji}`;
 }
+
+//Current weather
 
 function showWeather(response) {
   let currentCity = document.querySelector("#city");
@@ -177,6 +262,7 @@ function getCurrentPosition() {
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
 
+//Popular cities
 function getNewYork(response) {
   let apiKey = "281450ec88936f4fa8ee9864682b49a0";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
