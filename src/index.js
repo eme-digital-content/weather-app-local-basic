@@ -115,8 +115,8 @@ function convertF(event) {
   }
   booleF = false;
   booleC = true;
-  ceLink.classList.remove("active");
-  faLink.classList.add("active");
+  faLink.classList.remove("active");
+  ceLink.classList.add("active");
 }
 
 function convertC(event) {
@@ -157,8 +157,8 @@ function convertC(event) {
   }
   booleF = true;
   booleC = false;
-  ceLink.classList.add("active");
-  faLink.classList.remove("active");
+  faLink.classList.add("active");
+  ceLink.classList.remove("active");
 }
 
 faLink.addEventListener("click", convertF);
