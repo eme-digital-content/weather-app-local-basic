@@ -59,6 +59,8 @@ function search(event) {
   axios
     .get(`${apiUrl}q=${searchInput.value}&appid=${apiKey}&units=${units}`)
     .then(showCurrentTemp);
+  booleF = true;
+  booleC = false;
 }
 
 let form = document.querySelector("#search-form");
@@ -213,6 +215,8 @@ function showCurrentTemp(response) {
   let icon = document.querySelector("#icon");
   let iconEmoji = iconEmojis[response.data.weather[0].icon];
   icon.innerHTML = `${iconEmoji}`;
+  booleF = true;
+  booleC = false;
 }
 
 //Current weather
@@ -245,6 +249,8 @@ function showWeather(response) {
   let icon = document.querySelector("#icon");
   let iconEmoji = iconEmojis[response.data.weather[0].icon];
   icon.innerHTML = `${iconEmoji}`;
+  booleF = true;
+  booleC = false;
 }
 
 function retrievePosition(position) {
