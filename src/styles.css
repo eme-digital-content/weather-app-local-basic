@@ -142,19 +142,19 @@ form {
   vertical-align: top;
 }
 
-.celsius {
+#celsius {
   font-size: 30px;
   font-weight: bold;
-  color: #dfdce3;
+  color: grey;
   margin: 10px 0px 0px 0px;
 }
 
-.col-5 .active {
+#celsius.active {
   color: #dfdce3;
   cursor: default;
 }
 
-.col-5 .active:hover {
+#celsius.active:hover {
   text-decoration: none;
 }
 
@@ -163,6 +163,15 @@ form {
   font-weight: bold;
   color: grey;
   margin: 10px 0px 0px 0px;
+}
+
+#fahrenheit.active {
+  color: #dfdce3;
+  cursor: default;
+}
+
+#fahrenheit.active:hover {
+  text-decoration: none;
 }
 
 .temp-bar {
