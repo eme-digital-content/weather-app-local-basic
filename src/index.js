@@ -187,6 +187,33 @@ let iconEmojis = {
   "50n": "🌫",
 };
 
+//Forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDate();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "281450ec88936f4fa8ee9864682b49a0";
+  let apiUrl = `htpps://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //Current temperature
 
 function showCurrentTemp(response) {
@@ -217,6 +244,8 @@ function showCurrentTemp(response) {
   icon.innerHTML = `${iconEmoji}`;
   booleF = true;
   booleC = false;
+
+  getForecast(response.data.coord);
 }
 
 //Current weather
