@@ -191,7 +191,7 @@ let iconEmojis = {
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  let day = date.getDate();
+  let dayIndex = date.getDay();
   let days = [
     "Sunday",
     "Monday",
@@ -201,17 +201,40 @@ function formatDay(timestamp) {
     "Friday",
     "Saturday",
   ];
-  return days[day];
+  return days[dayIndex];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  let day1 = document.querySelector("#day1");
+  day1.innerHTML = `${formatDay(forecast[0].dt)}`;
+  let iconDay1 = document.querySelector("#icon-day1");
+  let iconEmoji = iconEmojis[forecast[0].weather[0].icon];
+  iconDay1.innerHTML = `${iconEmoji}`;
+
+  iconDay1.innerHTML = `<img src="http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}.png" alt="${forecast[0].weather[0].description}"/>`;
+  let maxDay1 = document.querySelector("#max-day1");
+  maxDay1.innerHTML = `${Math.round(forecast[0].temp.max)}°`;
+  let minDay1 = document.querySelector("#min-day1");
+  minDay1.innerHTML = `${Math.round(forecast[0].temp.min)}°`;
+
+  for (let i = 1; i < 5; i++) {
+    let day = document.querySelector(`#day${i + 1}`);
+    day.innerHTML = `${formatDay(forecast[i].dt)}`;
+    let iconDay = document.querySelector(`#icon-day${i + 1}`);
+    iconDay.innerHTML = `<img src="http://openweathermap.org/img/wn/${forecast[i].weather[0].icon}.png" alt="${forecast[i].weather[0].description}"/>`;
+    let maxDay = document.querySelector(`#max-day${i + 1}`);
+    maxDay.innerHTML = `${Math.round(forecast[i].temp.max)}°`;
+    let minDay = document.querySelector(`#min-day${i + 1}`);
+    minDay.innerHTML = `${Math.round(forecast[i].temp.min)}°`;
+  }
 }
 
 function getForecast(coordinates) {
   let apiKey = "281450ec88936f4fa8ee9864682b49a0";
-  let apiUrl = `htpps://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
 }
 
 //Current temperature
@@ -280,6 +303,7 @@ function showWeather(response) {
   icon.innerHTML = `${iconEmoji}`;
   booleF = true;
   booleC = false;
+  getForecast(response.data.coord);
 }
 
 function retrievePosition(position) {
