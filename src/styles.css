@@ -95,7 +95,7 @@ form {
 
 .col-5 {
   display: block;
-  padding: 20px 10px 0px 70px;
+  padding: 20px 10px 0px 120px;
 }
 
 .city-inner {
@@ -138,46 +138,16 @@ form {
 }
 
 .symbol {
-  font-size: 50px;
+  font-size: 40px;
   vertical-align: top;
 }
 
 #celsius {
-  font-size: 30px;
-  font-weight: bold;
-  color: grey;
-  margin: 10px 0px 0px 0px;
-}
-
-#celsius.active {
-  color: #dfdce3;
-  cursor: default;
-}
-
-#celsius.active:hover {
-  text-decoration: none;
-}
-
-#fahrenheit {
-  font-size: 30px;
-  font-weight: bold;
-  color: grey;
-  margin: 10px 0px 0px 0px;
-}
-
-#fahrenheit.active {
-  color: #dfdce3;
-  cursor: default;
-}
-
-#fahrenheit.active:hover {
-  text-decoration: none;
-}
-
-.temp-bar {
   font-size: 40px;
+  font-weight: bold;
   color: #dfdce3;
-  margin: 30px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
+  vertical-align: top;
 }
 
 .max-temp,
@@ -277,8 +247,15 @@ form {
   padding: 3%;
 }
 
+.forecast {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
 .week {
-  width: 100%;
+  width: 85%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -293,6 +270,7 @@ form {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+  width: 80%;
 }
 
 .next-days {
@@ -306,14 +284,14 @@ form {
 }
 
 .info {
-  padding: 1px 45px 1px 1px;
+  padding: 1px 25px 1px 1px;
   margin: 1px 5px 1px 1px;
 }
 
 .max-temp-2,
 .min-temp-2 {
   font-size: 20px;
-  text-align: left;
+  text-align: center;
   margin-left: 35px;
   padding-left: 10px;
   margin-top: 0;
@@ -331,8 +309,8 @@ form {
 #icon-day3,
 #icon-day4,
 #icon-day5 {
-  font-size: 30px;
-  text-align: right;
+  font-size: 40px;
+  text-align: center;
   width: 100%;
   padding: 1px 1px 1px 1px;
   margin: 1px 5px 1px 1px;

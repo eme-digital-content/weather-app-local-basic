@@ -66,104 +66,6 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-//Units conversion
-
-let temperature = document.querySelector("#current-temp-number");
-let ceLink = document.querySelector("#celsius");
-let faLink = document.querySelector("#fahrenheit");
-let maxTemp = document.querySelector("#max-temp");
-let minTemp = document.querySelector("#min-temp");
-let feeling = document.querySelector("#realfeel");
-let booleF = true;
-let booleC = false;
-
-function convertF(event) {
-  event.preventDefault();
-  let celsius = parseFloat(temperature.innerHTML);
-  if (!isNaN(celsius)) {
-    let fahrenheit = (celsius * 9) / 5 + 32;
-    if (booleF) {
-      temperature.innerHTML = Math.round(fahrenheit);
-    }
-  }
-
-  celsius = parseFloat(maxTemp.innerHTML);
-  if (!isNaN(celsius)) {
-    let fahrenheit = (celsius * 9) / 5 + 32;
-    let maxTempData = Math.round(fahrenheit);
-    if (booleF) {
-      maxTemp.innerHTML = `${maxTempData}°`;
-    }
-  }
-
-  celsius = parseFloat(minTemp.innerHTML);
-  if (!isNaN(celsius)) {
-    let fahrenheit = (celsius * 9) / 5 + 32;
-    let minTempData = Math.round(fahrenheit);
-    if (booleF) {
-      minTemp.innerHTML = `${minTempData}°`;
-    }
-  }
-
-  celsius = parseFloat(realfeel.innerHTML);
-  if (!isNaN(celsius)) {
-    let fahrenheit = (celsius * 9) / 5 + 32;
-    let realfeel = Math.round(fahrenheit);
-    if (booleF) {
-      feeling.innerHTML = `${realfeel}`;
-    }
-  }
-  booleF = false;
-  booleC = true;
-  faLink.classList.add("active");
-  ceLink.classList.remove("active");
-}
-
-function convertC(event) {
-  event.preventDefault();
-  let fahrenheit = parseFloat(temperature.innerHTML);
-  if (!isNaN(fahrenheit)) {
-    let celsius = ((fahrenheit - 32) * 5) / 9;
-    if (booleC) {
-      temperature.innerHTML = Math.round(celsius);
-    }
-  }
-
-  fahrenheit = parseFloat(maxTemp.innerHTML);
-  if (!isNaN(fahrenheit)) {
-    let celsius = ((fahrenheit - 32) * 5) / 9;
-    let maxTempData = Math.round(celsius);
-    if (booleC) {
-      maxTemp.innerHTML = `${maxTempData}°`;
-    }
-  }
-
-  fahrenheit = parseFloat(minTemp.innerHTML);
-  if (!isNaN(fahrenheit)) {
-    let celsius = ((fahrenheit - 32) * 5) / 9;
-    let minTempData = Math.round(celsius);
-    if (booleC) {
-      minTemp.innerHTML = `${minTempData}°`;
-    }
-  }
-
-  fahrenheit = parseFloat(feeling.innerHTML);
-  if (!isNaN(fahrenheit)) {
-    let celsius = ((fahrenheit - 32) * 5) / 9;
-    let realfeel = Math.round(celsius);
-    if (booleC) {
-      feeling.innerHTML = `${realfeel}`;
-    }
-  }
-  booleF = true;
-  booleC = false;
-  faLink.classList.remove("active");
-  ceLink.classList.add("active");
-}
-
-faLink.addEventListener("click", convertF);
-ceLink.addEventListener("click", convertC);
-
 //Weather icon
 
 let iconEmojis = {
@@ -206,28 +108,20 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  let day1 = document.querySelector("#day1");
-  day1.innerHTML = `${formatDay(forecast[0].dt)}`;
-  let iconDay1 = document.querySelector("#icon-day1");
-  let iconEmoji = iconEmojis[forecast[0].weather[0].icon];
-  iconDay1.innerHTML = `${iconEmoji}`;
 
-  iconDay1.innerHTML = `<img src="http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}.png" alt="${forecast[0].weather[0].description}"/>`;
-  let maxDay1 = document.querySelector("#max-day1");
-  maxDay1.innerHTML = `${Math.round(forecast[0].temp.max)}°`;
-  let minDay1 = document.querySelector("#min-day1");
-  minDay1.innerHTML = `${Math.round(forecast[0].temp.min)}°`;
-
-  for (let i = 1; i < 5; i++) {
-    let day = document.querySelector(`#day${i + 1}`);
-    day.innerHTML = `${formatDay(forecast[i].dt)}`;
-    let iconDay = document.querySelector(`#icon-day${i + 1}`);
-    iconDay.innerHTML = `<img src="http://openweathermap.org/img/wn/${forecast[i].weather[0].icon}.png" alt="${forecast[i].weather[0].description}"/>`;
-    let maxDay = document.querySelector(`#max-day${i + 1}`);
-    maxDay.innerHTML = `${Math.round(forecast[i].temp.max)}°`;
-    let minDay = document.querySelector(`#min-day${i + 1}`);
-    minDay.innerHTML = `${Math.round(forecast[i].temp.min)}°`;
-  }
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      let forecastElement = document.querySelector(`#day${index}`);
+      forecastElement.innerHTML = `${formatDay(forecastDay.dt)}`;
+      let iconElement = document.querySelector(`#icon-day${index}`);
+      let iconEmoji = iconEmojis[forecastDay.weather[0].icon];
+      iconElement.innerHTML = `${iconEmoji}`;
+      let maxElement = document.querySelector(`#max-day${index}`);
+      maxElement.innerHTML = `${Math.round(forecastDay.temp.max)}°`;
+      let minElement = document.querySelector(`#min-day${index}`);
+      minElement.innerHTML = `${Math.round(forecastDay.temp.min)}°`;
+    }
+  });
 }
 
 function getForecast(coordinates) {
